@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo com Transformações</title>
+    <style>
+        canvas {
+            background: #000;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="1000" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let ball = {
+            x: canvas.width / 2,
+            y: canvas.height - 30,
+            radius: 10,
+            dx: 2,
+            dy: -2,
+            rotation: 0,
+            scale: 1
+        };
+
+        
+        // Função para desenhar a bola
+        function drawBall() {
+            ctx.save();
+            
+            // Translate
+            ctx.translate(ball.x, ball.y);
+            
+            // Scale
+            ctx.scale(ball.scale, ball.scale);
+
+            // Rotate
+            ctx.rotate(ball.rotation);
+
+            // Clipping Path
+            ctx.beginPath();
+            ctx.arc(0, 0, ball.radius, 0, Math.PI * 2);
+            ctx.clip();
+            
+            ctx.fillStyle = '#ff0000';
+            ctx.fillRect(-ball.radius, -ball.radius, ball.radius * 2, ball.radius * 2);
+
+            ctx.restore();
+        }
+
+
+
+        // Função de atualização do jogo
+        function updateGameArea() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Verifique colisão com as bordas
+            if (ball.x + ball.dx > canvas.width - ball.radius || ball.x + ball.dx < ball.radius) {
+                ball.dx = -ball.dx;
+            }
+            if (ball.y + ball.dy > canvas.height - ball.radius || ball.y + ball.dy < ball.radius) {
+                ball.dy = -ball.dy;
+            }
+
+            // Atualize a posição da bola
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            drawBall();
+            requestAnimationFrame(updateGameArea);
+        }
+
+        // Eventos de teclado para controlar as transformações
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                ball.rotation -= 0.1;
+            } else if (event.key === 'ArrowRight') {
+                ball.rotation += 0.1;
+            } else if (event.key === 'ArrowUp') {
+                ball.scale += 0.1;
+            } else if (event.key === 'ArrowDown') {
+                ball.scale -= 0.1;
+            }
+        });
+
+        // Inicie o jogo
+        updateGameArea();
+    </script>
+</body>
+</html>
+
+
