@@ -61,3 +61,5 @@ Para finalizar, fazemos a atualização de bola, para onde ela deve voltar, cham
 Utilizando esses conceitos, fizemos um jogo de "ping pong" inspirado em um jogo conhecido pelo nome "breakout", sendo o objetivo do jogo usar a raquete para rebater a bolinha e a bolinha quebrar os tijolos, caso a bolinha passe para baixo da raquete o jogador perde 1 vida, tendo um total de 2 vidas.
 
 
+<h2> DIAGRAMA DCE CLASSE:</h2>
+<img src="img/diagrama.jpeg">
