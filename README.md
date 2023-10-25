@@ -14,9 +14,20 @@ No script contém o link do código em Javascript.
 
 </br>
 
-Anexamos o id do canvas dentro do body.
+<h2>Segundo passo:</h2>
 
-Linkamos o canvas no javascript e usamos algumas funções do canvas para compor nosso jogo. a bolinha tem *rotate*, *translate*, *clipping path* e *scale*, a raquete tem *colisor* e *translate*.
+Agora no código script, começamos definindo as variáveis. Dentre elas estão a bola, a raquete, os tijolos, os pontos e a vida do jogador.
+Como mostra a imagem abaixo:
+<img src="img/variaveis.png">
+
+<h2>Terceiro passo:</h2>
+Definir os eventos de controle no teclado, ou seja, definir que ao clicar por exemplo a seta para cima ele aumenta o tamanho da bola.
+- seta para direita:  +10px
+- seta para esquerda: -10px
+- seta para cima: +0.1(aumenta a escala da bola)
+- seta para baixo: -0.1 (diminui)
+<img src="img/seta
+
 
 Utilizando esses conceitos, fizemos um jogo de "ping pong" inspirado em um jogo conhecido pelo nome "breakout", sendo o objetivo do jogo usar a raquete para rebater a bolinha e a bolinha quebrar os tijolos, caso a bolinha passe para baixo da raquete o jogador perde 1 vida, tendo um total de 2 vidas.
 
